@@ -1,0 +1,12 @@
+how to install apache
+
+sudo apt update
+sudo apt install apache2
+sudo ufw app list
+sudo ufw allow 'Apache'
+sudo ufw status
+sudo ufw enable
+sudo systemctl status apache2
+cd /var/www/html
+
+browse :- public ip of instance
