@@ -1,0 +1,246 @@
+DOCER INSTALLATION COMMAND use on Linux machine
+
+-  curl -fsSL https://get.docker.com -o get-docker.sh
+-  ls get.docker.sh
+-  sh get-docker.sh
+-  systemctl status docker
+-  systemctl start docker
+-  systemctl enable docker
+-  systemctl status docker
+
+To Check the docker image Commond is used 
+
+-  Docker image ls 
+
+To Fetch the image from Docker hub used command
+
+- Docker pull ubuntu:18.04
+
+To Fetch the Latest image from ubuntu 
+
+-  docker image pull ubuntu:latest
+
+Taking another os
+
+-  Docker pull image centos:latest
+
+- Docker image pull nginx:latest
+
+To Delete image 
+
+-  Docker image rm Centos:latest
+
+To Delete multiple Images with image id
+
+- docker image rm -f f9a80a55f49 fffffc90d343
+
+To save a file or take a backup ex > is used for tagging 
+
+- docker image save nginx:latest > nginx-latest.tar
+
+how to over come delete image use command jo image delete hogya tha usko return lane ke liye use karte hain load command
+
+- docker load < nginx-latest.tar
+
+To Check inspect the image 
+
+- docker image inspect nginx:latest
+
+To Run the Container
+
+- docker container run ubuntu:latest
+
+To Check the running container command
+
+- docker container ls
+
+To check all details of container
+ 
+- docker container ls -a
+
+To Delete the comtainer
+
+- docker rm container container id
+
+To run container in background d means detach mode 
+
+- docker container run -d nginx:latest
+
+To inter inside of the container 
+
+- Docker container run -it ubuntu:18.04 /bin/bash
+
+To check container details release details
+
+- cat etc/os-release
+
+To Delete multiple container
+
+- docker container prune
+
+To inspect the container
+
+- docker inspect 36be3bd054eebd6884 | grep -i ip
+
+To check the Container logs
+
+ -  docker container logs 36be3bd054ee
+
+To check the logs in container
+
+-  docker container stats --no-stream
+
+- free -h
+
+To port the container
+
+- docker container run -d -p 3600:80 --name test1-web nginx:latest
+
+To check how many container are running
+
+- docker ps
+-docker container ls
+-docker container ls -a
+
+To go inside the container 
+
+- docker container exec -it 6fae498d908f /bin/bash
+
+To change the container name
+
+- docker container rename 2813c9c00240 Ritik
+
+To restart the container 
+
+- docker container restart 2813c9c00240
+
+To pause the container 
+
+- docker container pause 2813c9c00240
+
+To unpause the container
+
+- docker container unpause 2813c9c00240
+
+To kill the container 
+
+- docker container kill 2813c9c00240
+
+To create container image file is image name 
+
+- docker container commit 1300c7cb429a file:v1
+
+To Create image to container file:v1 means image name
+
+- docker container run -itd file:v1
+
+---------Volume--------------
+
+To create image 
+
+-docker image pull MySQL:latest
+
+Run the MySQL image to convert in container d means detached e mean env variable 
+
+-  docker container run -d --name mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=true mysql:latest 95099a6665995fe2d46e2261df1ac852e5a6b830e796bf78c59fe96cbbeea4d3
+
+To check the volume once container is create automaticall volume also created
+
+- docker volume ls
+
+To inspect the docker volume
+
+- docker volume inspect bccb773bd47b48f7e30b3e05c819479b4d0881e9643bb3ac5831a579bb38c019
+
+To mount the volume 
+
+- ls lrth /var/lib/docker/volumes/bccb773bd47b48f7e30b3e05c819479b4d0881e9643bb3ac5831a579bb38c019/_data
+
+Go to Inside the container 
+
+- docker container exec -it 00da11e187d7 bin/bash
+- MySQL
+- show databases
+- create database ritikdb;
+
+To Run Container with the help of volume
+
+- docker container run -itd -v 95099a6665995fe2d46e2261df1ac852e5a6b830e796bf78c59fe96cbbeea4d3:/var/lib/mysql mysql:latest
+
+To run docker container on local host with attached port 
+
+-  docker container run -itd -p 5000:5000 --name my registry registry
+
+-------------------------Networking----------------------------------------------
+
+To check how many network is running
+
+- docker network ls
+
+To run the container
+
+- docker container run ubuntu:latest
+
+To inspect the container
+
+- docker container inspect 0951bc15d0d4
+
+To Create a network
+
+- docker network create -d bridge test
+
+To create a container with the help of network
+
+- docker container run -itd --network test ubuntu:latest
+
+To inspect container with ip 
+
+- docker container inspect de292c74ad83 | grep -i ip
+
+To install iputills library 
+
+- apt-get install iputils-ping net-tools
+
+TO run container with network 
+
+- docker container run -itd --network bridge ubuntu:latest
+
+-----------------Docker file-----------------------------
+
+create a directory
+
+- mkdir dockerfiles
+- cd dockerfiles/
+- 
+
+-------------Docker compose-----------------
+
+mkdir docker-compose
+
+Yeh command docker hub se lekar aage  compose ko run karegi 
+
+-  sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -)-$(uname -m)"  -o /usr/local/bin/docker-compose
+
+To give permission to docker compose 
+
+- sudo chmod +X /usr/local/bin/docker-compose
+
+
+------------------Important command
+
+To check the status of docker 
+- docker info
+
+if docker is not start then start service first
+
+- sudo docker service start
+
+To build image
+
+- docker build -t myapp .
+
+To run Image 
+
+- docker run -p 8080:80 myapp
+
+
