@@ -1,0 +1,7 @@
+nginx installation
+
+apt-get update
+apt install nginx
+apt-get nginx status
+service nginx status
+ 
